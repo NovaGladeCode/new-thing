@@ -1,0 +1,26 @@
+# Maven build output
+target/
+
+# Maven downloaded binaries (local maven install)
+../maven/
+
+# Maven zip download
+../maven.zip
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+.settings/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Compiled class files
+*.class
+
+# Log files
+*.log

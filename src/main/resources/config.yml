@@ -1,0 +1,19 @@
+# SoulLink Configuration
+
+# Day counter (auto-managed, do not edit manually)
+day-counter: 1
+
+# Whether hardcore mode is enabled (both players share lives and die permanently)
+hardcore: true
+
+# Sync settings
+sync-inventory: true
+sync-damage: true
+sync-hunger: true
+sync-armor-offhand: true  # Treat offhand armor item as extra armor
+
+# Pause settings
+pause-on-start: false
+
+# Message prefix
+prefix: "&5[&dSoulLink&5]&r "

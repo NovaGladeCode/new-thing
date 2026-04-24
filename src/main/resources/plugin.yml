@@ -1,0 +1,34 @@
+name: SoulLink
+version: ${project.version}
+main: org.novagladecode.soullink.SoulLinkPlugin
+api-version: 1.21
+author: NovaGlade
+description: Shared inventory, damage, hunger, hardcore-mode and time-pause plugin
+
+commands:
+  soullink:
+    description: Main SoulLink command
+    usage: /soullink <subcommand>
+    aliases: [sl]
+  slpause:
+    description: Pause / unpause the game (time + freeze)
+    usage: /slpause
+    permission: soullink.pause
+  slday:
+    description: Show the current day counter
+    usage: /slday
+  slreset:
+    description: Reset the day counter
+    usage: /slreset
+    permission: soullink.admin
+
+permissions:
+  soullink.admin:
+    description: Full admin access
+    default: op
+  soullink.pause:
+    description: Can pause/unpause the world
+    default: op
+  soullink.link:
+    description: Can link/unlink with another player
+    default: true
