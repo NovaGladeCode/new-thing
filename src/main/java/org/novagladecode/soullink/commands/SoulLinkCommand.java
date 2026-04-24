@@ -71,7 +71,14 @@ public class SoulLinkCommand implements CommandExecutor, TabCompleter {
                 target.getInventory().setContents(player.getInventory().getContents());
                 target.getInventory().setArmorContents(player.getInventory().getArmorContents());
                 target.getInventory().setItemInOffHand(player.getInventory().getItemInOffHand());
+                target.getInventory().setHeldItemSlot(player.getInventory().getHeldItemSlot());
                 target.updateInventory();
+
+                // Force immediate health & food sync
+                target.setHealth(player.getHealth());
+                target.setFoodLevel(player.getFoodLevel());
+                target.setSaturation(player.getSaturation());
+                target.setExhaustion(player.getExhaustion());
             }
 
             // ── /soullink unlink ─────────────────────────────────────────────

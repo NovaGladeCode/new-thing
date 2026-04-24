@@ -10,6 +10,8 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.player.PlayerSwapHandItemsEvent;
+import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.inventory.ItemStack;
 import org.novagladecode.soullink.SoulLinkPlugin;
 
@@ -52,6 +54,16 @@ public class InventoryListener implements Listener {
         scheduleSync(player);
     }
 
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onSwapHand(PlayerSwapHandItemsEvent event) {
+        scheduleSync(event.getPlayer());
+    }
+
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onItemHeld(PlayerItemHeldEvent event) {
+        scheduleSync(event.getPlayer());
+    }
+
     private void scheduleSync(Player player) {
         if (!plugin.getConfig().getBoolean("sync-inventory", true)) return;
         if (syncGuard.contains(player.getUniqueId())) return;
@@ -88,6 +100,8 @@ public class InventoryListener implements Listener {
             // Offhand
             partner.getInventory().setItemInOffHand(
                     clone(source.getInventory().getItemInOffHand()));
+            // Held slot
+            partner.getInventory().setHeldItemSlot(source.getInventory().getHeldItemSlot());
 
             partner.updateInventory();
         } finally {
